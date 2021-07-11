@@ -5,25 +5,20 @@
  */
 package pe.edu.upeu.clase04.controller;
 
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import pe.edu.upeu.clase04.DaoImpl.UsuarioDaoImpl;
-import pe.edu.upeu.clase04.dao.UsuarioDao;
 
 /**
  *
  * @author dreyna
  */
-public class LoginController extends HttpServlet {
-private UsuarioDao udao = new UsuarioDaoImpl();
-private Gson gson = new Gson();
+public class CloseController extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,21 +31,10 @@ private Gson gson = new Gson();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        boolean create = true;
-        HttpSession session = request.getSession(create);
         PrintWriter out = response.getWriter();
-        String correo = request.getParameter("correo");
-         String password = request.getParameter("password");
-         HashMap<String, Object> datos  = udao.validar(correo, password);
-
-         if(datos.size()>0){
-             session.setAttribute("idusuario", datos.get("idusuario"));
-              session.setAttribute("username", datos.get("username"));
-             out.println(gson.toJson(datos));             
-         }else{
-             out.println("Usuario " +correo+ " No Existe");
-         }
-
+        HttpSession session = request.getSession();
+        session.invalidate();
+       response.sendRedirect("index.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

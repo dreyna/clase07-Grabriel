@@ -5,10 +5,20 @@
  */
 package pe.edu.upeu.clase04.dao;
 
+import java.util.HashMap;
+import java.util.List;
+import pe.edu.upeu.clase04.entity.Usuario;
+
 /**
  *
  * @author dreyna
  */
 public interface UsuarioDao {
-    int validar(String username, String password);
+    HashMap<String, Object> validar(String username, String password);//x
+   int create(Usuario u);
+   int update(Usuario u);
+   int delete(int id);
+   boolean buscar(String username);
+   Usuario read(int id);
+   List<Usuario> readAll();
 }

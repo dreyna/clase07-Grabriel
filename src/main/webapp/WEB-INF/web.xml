@@ -4,9 +4,25 @@
         <servlet-name>LoginController</servlet-name>
         <servlet-class>pe.edu.upeu.clase04.controller.LoginController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MainController</servlet-name>
+        <servlet-class>pe.edu.upeu.clase04.controller.MainController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CloseController</servlet-name>
+        <servlet-class>pe.edu.upeu.clase04.controller.CloseController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/lc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MainController</servlet-name>
+        <url-pattern>/mc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CloseController</servlet-name>
+        <url-pattern>/cc</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
